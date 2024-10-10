@@ -240,7 +240,6 @@ public class main {
         String ruta = sc.nextLine();
         rutaFija = new File(ruta);
         System.out.println("La ruta ha sido cambiada a: " + rutaFija.getAbsolutePath());
-
     }
 
     // Método buscarAvanzada: permitir al usuario realizar una busqueda de los videojuegos utilizando varios requisitos de busqueda como el titulo, la plataforma o el año
@@ -270,10 +269,4 @@ public class main {
             }
         }
     }
-
 }
-
-
-
-
-
