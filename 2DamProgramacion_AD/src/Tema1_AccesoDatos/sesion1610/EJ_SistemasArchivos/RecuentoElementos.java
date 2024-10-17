@@ -1,9 +1,6 @@
 package Tema1_AccesoDatos.sesion1610.EJ_SistemasArchivos;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class RecuentoElementos {
     private static File archivo = new File("C://Users//Iker//Downloads//Hola.txt");
@@ -23,26 +20,28 @@ public class RecuentoElementos {
         } else {
             System.out.println("El fichero existe en: " + archivo.getAbsolutePath());
         }
+
     }
 
     private static void contarVocales() {
-        try {
-            FileReader leer = new FileReader(archivo);
-            BufferedReader leerArchivo = new BufferedReader(leer);
+
+        try (FileReader leer = new FileReader(archivo);
+             BufferedReader leerArchivo = new BufferedReader(leer);) {
 
             int caracter;
             int contadorVocales = 0;
 
-            while ((caracter = leer.read()) != -1) {
+
+            while ((caracter = leerArchivo.read()) != -1) {
                 char letra = (char) caracter;
-                System.out.println(letra + " ");
                 for(int i = 0; i < vocales.length; i++) {
-                    if (caracter == vocales[i]) {
+                    if (letra == vocales[i]) {
                         contadorVocales++;
                     }
                 }
             }
             System.out.println("Contador de vocales: " + contadorVocales);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
