@@ -1,9 +1,6 @@
 package Tema1_AccesoDatos.sesion1610.EJ_SistemasArchivos;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class GestionDirectorio {
     public static void main(String[] args) {
@@ -12,26 +9,40 @@ public class GestionDirectorio {
 
     private static void ComprobacionRuta() {
         File rutaDirectorio = new File("C://Users//Iker//Documents//2DamProgramacion_AD-master//2DamProgramacion_AD//src//Tema1_AccesoDatos//sesion1610//EJ_SistemasArchivos");
-        if (rutaDirectorio.exists()) {
-            ProcessBuilder pb = new ProcessBuilder();
-            pb.command("cmd.exe", "/c", "dir");
+        if (rutaDirectorio.exists() && rutaDirectorio.isDirectory()) {
+            File[] listar = rutaDirectorio.listFiles();
 
-            try {
-                Process p = pb.start();
-                BufferedReader leer = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                String line;
-
-                while ((line = leer.readLine()) != null) {
-                    System.out.println(line);
+            if (listar != null) {
+                for (File file : listar) {
+                    if (file.isFile()) {
+                        System.out.println(file.getName() + " es un fichero");
+                        System.out.println("Tamaño del fichero: " + (file.length() / 1024) + " Kb");
+                    } else if (file.isDirectory()){
+                        System.out.println(file.getName() + " es un directorio");
+                        System.out.println("Tamaño del directorio: " + (TamañoDirectorio(file) / 1024) + " Kb");
+                    }
                 }
-
-                int ExitCode = p.waitFor();
-                System.out.println("Código de salida: " + ExitCode);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
          } else {
             System.out.println("ERROR - No existe el directorio");
         }
+
+
+    }
+
+    private static long TamañoDirectorio(File directorio) {
+        long tamaño = 0;
+        File[] archivos = directorio.listFiles();
+
+        if (archivos != null) {
+            for (File archivo : archivos) {
+                if (archivo.isFile()) {
+                    tamaño += archivo.length();
+                } else if (archivo.isDirectory()){
+                    tamaño += TamañoDirectorio(archivo);
+                }
+            }
+        }
+        return tamaño;
     }
 }
