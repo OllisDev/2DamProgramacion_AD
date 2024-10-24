@@ -16,7 +16,6 @@ public class Alumnos {
     }
 
     //GETTER/SETTER
-
     public String getNombre() {
         return nombre;
     }
