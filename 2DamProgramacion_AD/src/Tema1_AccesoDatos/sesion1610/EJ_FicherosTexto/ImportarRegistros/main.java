@@ -12,6 +12,7 @@ public class main {
         ArrayList<Alumnos> listaAlumnos = leerFichero();
         ImprimirAlumnos(listaAlumnos);
 
+        MostrarAlumnoMayorNota(listaAlumnos);
     }
     private static ArrayList<Alumnos> leerFichero() {
         ArrayList<Alumnos> lista = new ArrayList<>();
@@ -40,5 +41,24 @@ public class main {
             System.out.println(alumno);
         }
     }
+
+    private static void MostrarAlumnoMayorNota(ArrayList<Alumnos> listaAlumnos) {
+        Alumnos alumnoMayorNota = null;
+        double notaMaxima = -1;
+
+        for (Alumnos alumno : listaAlumnos) {
+            if(alumno.getNotaMedia() > notaMaxima) {
+                notaMaxima = alumno.getNotaMedia();
+                alumnoMayorNota = alumno;
+            }
+       }
+        System.out.println("El alumno con mayor nota es: " + alumnoMayorNota.getNombre());
+    }
+
+    private static void DevolverRepresentacionAlumno() {
+
+    }
+
+
 }
 
