@@ -1,4 +1,4 @@
-package Tema1_AccesoDatos.sesion0411.ficherosBinarios;
+package Tema1_AccesoDatos.sesion0411.ficherosBinariosEntero;
 
 import java.io.*;
 
