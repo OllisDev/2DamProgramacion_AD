@@ -46,6 +46,6 @@ public class main {
         String curso = sc.nextLine();
 
         guardarAlumno(new Alumno(nombre, edad, curso)); // Llamamos al metodo GuardarAlumno para instanciar un objeto de la clase Alumno y guardar los datos introducidos por teclado del usuario en el archivo binario
-        leerAlumno(); // LLamamos al metodo leerAlumno para leer cada uno de los datos guardados por el usuario dentro del archivo binario
+        leerAlumno(); // LLamamos al metodo leerAlumno para leer cada uno de los datos guardados por el usuario dentro del archivo binario1
     }
 }
