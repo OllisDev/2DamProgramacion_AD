@@ -1,5 +1,7 @@
+
 package Tema1_AccesoDatos.sesion0511.monaco_json;
 
+/*
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -18,7 +20,7 @@ public class main_alumnos {
             // TODO: Crear un JSONObject a partir del JSONTokener
             JSONObject jo = new JSONObject(jt);
             // TODO: Obtener el objeto "race" del JSON principal
-            
+            // no entiendo como puedo obtener un objeto de un JSON
             // TODO: Obtener el objeto "results" dentro de "race"
 
             // TODO: Obtener el array "result" dentro de "results"
@@ -54,3 +56,5 @@ public class main_alumnos {
         }
     }
 }
+*/
+
