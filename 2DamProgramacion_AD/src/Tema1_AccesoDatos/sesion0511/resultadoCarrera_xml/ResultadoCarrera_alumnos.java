@@ -7,11 +7,13 @@ package Tema1_AccesoDatos.sesion0511.resultadoCarrera_xml;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Result;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import java.io.File;
 
 
 /**
@@ -49,44 +51,57 @@ public class ResultadoCarrera_alumnos {
 	        // TODO: Crear un DocumentBuilder a partir de dbFactory
 			DocumentBuilder db = dbf.newDocumentBuilder();
 	    	// TODO: Cargar y analizar el archivo XML especificado por xmlFilePath
-
+			Document doc = db.parse(new File("./Monaco2017.xml"));
 	    	// TODO: Normalizar el contenido del documento XML
-
+			doc.getDocumentElement().normalize(); //normalize(): normalizar contenido
 	        // TODO: Obtener la lista de elementos "Result" del XML
-
+			NodeList resultList = doc.getElementsByTagName("result"); // podemos acceder directamente al elemento
 	        // TODO: Iterar sobre cada elemento "Result" en resultList
+			for(int i= 0; i < resultList.getLength(); i++) {
+				// TODO: Obtener el elemento "Result" actual de resultList
+				Element result = (Element) resultList.item(i);
+				// TODO: Crear una instancia de ResultadoCarrera_TO_DO utilizando el elemento resultElement
+				ResultadoCarrera_alumnos resultado = new ResultadoCarrera_alumnos(result);
+				// TODO: Imprimir el resultado utilizando el método toString()
 
-	    		// TODO: Obtener el elemento "Result" actual de resultList
+			}
 
-	            // TODO: Crear una instancia de ResultadoCarrera_TO_DO utilizando el elemento resultElement
 
-	            // TODO: Imprimir el resultado utilizando el método toString()
+
+
+
 
 	    } catch (Exception e) {
 	        // TODO: Imprimir un mensaje de error si ocurre una excepción al procesar el archivo XML
+			e.printStackTrace();
 	    }
 	}
 
 	public ResultadoCarrera_alumnos(Element result) {
 	    try {
 	        // TODO: Obtener el elemento "Driver" de result y extraer "GivenName" y "FamilyName"
-
+			Element d = (Element) result.getElementsByTagName("Driver").item(0);
+			String givenName = d.getElementsByTagName("GivenName").item(0).getTextContent(); //getTextContent(): obtener cadena de texto
+			String familyName = d.getElementsByTagName("FamilyName").item(0).getTextContent();
 	    	// TODO: Crear una instancia de Driver usando driverElement
-
+			Driver driver = new Driver(d);
 	        // TODO: Obtener el nombre del "Constructor" del coche
-
+			Element c = (Element) result.getElementsByTagName("Constructor").item(0);
 	        // TODO: Obtener la posición inicial en la parrilla de salida
-
+			Element grid = (Element) result.getElementsByTagName("Grid").item(0);
 	        // TODO: Obtener la posición final de la carrera a partir del atributo "position"
 
 	        // TODO: Obtener la cantidad de vueltas completadas
 
 	        // TODO: Obtener el tiempo total en milisegundos (si existe)
-
+			// Tiempo total en milisegundos
+			Element timeElement = (Element) result.getElementsByTagName("Time").item(0);
+			this.timeMillis = timeElement != null ? Long.parseLong(timeElement.getAttribute("millis")) : 0; //
 	        // TODO: Obtener el rango de la vuelta rápida (si existe)
 
 	        // TODO: Comprobar si el piloto terminó la carrera ("statusId" igual a "1")
-
+			Element status = (Element) result.getElementsByTagName("Status").item(0);
+			String statusID = status != null ? Integer.parseInt(status.getAttribute("1")) : 0;
 	    } catch (Exception e) {
 	        // TODO: Imprimir la traza de la excepción si ocurre un error
 	    }

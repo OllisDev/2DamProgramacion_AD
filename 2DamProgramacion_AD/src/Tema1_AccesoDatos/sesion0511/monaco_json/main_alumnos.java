@@ -1,7 +1,7 @@
 
 package Tema1_AccesoDatos.sesion0511.monaco_json;
 
-/*
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -14,17 +14,17 @@ public class main_alumnos {
         // TODO: Definir la ruta del archivo JSON como un String
             String ruta = "./monaco.json";
         // TODO: Crear un FileInputStream para leer el archivo JSON
-        try (FileInputStream fis = new FileInputStream("monaco.json") {
+        try (FileInputStream fis = new FileInputStream("monaco.json")) {
             // TODO: Crear un JSONTokener utilizando el FileInputStream
             JSONTokener jt = new JSONTokener(fis);
             // TODO: Crear un JSONObject a partir del JSONTokener
             JSONObject jo = new JSONObject(jt);
             // TODO: Obtener el objeto "race" del JSON principal
-            // no entiendo como puedo obtener un objeto de un JSON
+            JSONObject race = jo.getJSONObject("race");
             // TODO: Obtener el objeto "results" dentro de "race"
-
+            JSONObject results = race.getJSONObject("results");
             // TODO: Obtener el array "result" dentro de "results"
-
+            JSONArray resultList = results.getJSONArray("result");
             // TODO: Iterar sobre cada elemento del array "result"
             for (int i = 0; i < resultList.length(); i++) {
                 // TODO: Obtener el objeto "result" en la posición actual del array
@@ -56,5 +56,5 @@ public class main_alumnos {
         }
     }
 }
-*/
+
 
