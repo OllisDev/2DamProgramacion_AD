@@ -90,9 +90,9 @@ public class ResultadoCarrera_alumnos {
 	        // TODO: Obtener la posición inicial en la parrilla de salida
 			Element grid = (Element) result.getElementsByTagName("Grid").item(0);
 	        // TODO: Obtener la posición final de la carrera a partir del atributo "position"
-
+			Element position = (Element) result.getElementsByTagName("position").item(9);
 	        // TODO: Obtener la cantidad de vueltas completadas
-
+			Element laps = (Element) result.getElementsByTagName("Laps").item(0);
 	        // TODO: Obtener el tiempo total en milisegundos (si existe)
 			// Tiempo total en milisegundos
 			Element timeElement = (Element) result.getElementsByTagName("Time").item(0);
