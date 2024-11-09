@@ -51,7 +51,7 @@ public class ResultadoCarrera_alumnos {
 	        // TODO: Crear un DocumentBuilder a partir de dbFactory
 			DocumentBuilder db = dbf.newDocumentBuilder();
 	    	// TODO: Cargar y analizar el archivo XML especificado por xmlFilePath
-			Document doc = db.parse(new File("./Monaco2017.xml"));
+			Document doc = db.parse(new File("C://Users//Iker//Documents//2DamProgramacion_AD-master//2DamProgramacion_AD//src//Tema1_AccesoDatos//sesion0511//resultadoCarrera_xml//Monaco2017.xml"));
 	    	// TODO: Normalizar el contenido del documento XML
 			doc.getDocumentElement().normalize(); //normalize(): normalizar contenido
 	        // TODO: Obtener la lista de elementos "Result" del XML
@@ -98,12 +98,14 @@ public class ResultadoCarrera_alumnos {
 			Element timeElement = (Element) result.getElementsByTagName("Time").item(0);
 			this.timeMillis = timeElement != null ? Long.parseLong(timeElement.getAttribute("millis")) : 0; //
 	        // TODO: Obtener el rango de la vuelta rápida (si existe)
-
+			Element fastestLap = (Element) result.getElementsByTagName("FastestLap").item(0);
+			this.rankFastesLap = fastestLap != null ? Integer.parseInt(fastestLap.getAttribute("rank")) : 0;
 	        // TODO: Comprobar si el piloto terminó la carrera ("statusId" igual a "1")
 			Element status = (Element) result.getElementsByTagName("Status").item(0);
-			String statusID = status != null ? Integer.parseInt(status.getAttribute("1")) : 0;
+
 	    } catch (Exception e) {
 	        // TODO: Imprimir la traza de la excepción si ocurre un error
+			e.printStackTrace();
 	    }
 	}
 
