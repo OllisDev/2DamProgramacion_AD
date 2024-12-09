@@ -11,7 +11,7 @@ public class CifradoArchivos {
 
         // TODO: Solicitar la ruta del archivo al usuario y guardala en la variable rutaArchivo
         System.out.println("Introduce la ruta del archivo: ");
-        String path = sc.next();
+        String rutaArchivo = sc.next();
 
 		// TODO: Solicitar la clave numérica para cifrado o descifrado y guardala en la variable clave
         System.out.println("Introduce la clave numérica: ");
@@ -22,7 +22,7 @@ public class CifradoArchivos {
         String opcion = sc.next();
 		
         // TODO: Crear un objeto File para representar el archivo llamado archivo
-        File file = new File(path);
+        File file = new File(rutaArchivo);
 		
         // TODO: Verificar si el archivo existe y es un archivo válido, si no lo es lanza un mensaje de error y termina el programa
         if (file.exists() && file.isFile()) {
@@ -43,12 +43,12 @@ public class CifradoArchivos {
         // TODO: Crear un objeto File para representar el archivo llamado archivoSalida a partir del archivo padre 
         // nombre.getName().replaceFirst("\\.[^.]+$", sufijo + "$0")
 
-        File archivoSalida = new File(path);
+        File archivoSalida = new File(rutaArchivo);
 
 		
 
         // TODO: dentro de un try(Abrir el archivo original para lectura y preparar un nuevo archivo para escritura)
-        try (BufferedReader bf = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader bf = new BufferedReader(new FileReader(rutaArchivo))) {
             BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida));
 			// TODO: Declara un int caracter
             String caracter;
@@ -56,14 +56,15 @@ public class CifradoArchivos {
             // TODO: Leer el archivo carácter por carácter
             while ((caracter = bf.readLine()) != null) {
                 // TODO: Realizar la operación de cifrado o descifrado según la opción
-
+                // no entiendo a que se refiere a realizar la operación de cifrado o descifrado
             }
 
                 
             
 
             // TODO: Confirmar que la operación se ha completado y mostrar la ruta del archivo generado
-           
+            System.out.println("Se ha completado la operación");
+            System.out.println("Ruta del archivo: " + archivoSalida.getAbsolutePath());
 
             // TODO: Manejar errores de lectura/escritura e informar al usuario
         } catch (Exception e) {
